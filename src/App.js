@@ -18,11 +18,12 @@ class App extends Component {
     console.log(" pwd value : ", event.target.value)
     this.setState({ password : event.target.value })
   }
+  
 
   contactGithub(){
     axios.get('https://github.com/login/oauth/authorize',{})
     .then((response) =>{
-      console.log("response : ", response)
+      console.log("response from github : ", response)
     })
   }
 
