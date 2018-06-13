@@ -21,7 +21,16 @@ class App extends Component {
   
 
   contactGithub(){
-    axios.get('https://github.com/login/oauth/authorize',{})
+    axios.get('https://github.com/login/oauth/authorize',{
+      client_id : '3fb8c782622ac4a1d0a6',
+      redirect_uri : '',
+      state : 'An unguessable random string',
+      allow_signup : false
+    }, {
+      headers : {
+        headers: {'Access-Control-Allow-Origin': '*'},
+      }
+    })
     .then((response) =>{
       console.log("response from github : ", response)
     })
