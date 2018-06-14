@@ -1,62 +1,104 @@
 import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
-
+import Dashboard from './Dashboard';
+import { Route, Switch } from 'react-router-dom';
+const cors = require('cors')
 class App extends Component {
+
+
   state = {
-    emailId : '',
-    password : ''
+    emailId: '',
+    password: ''
   }
 
-  updateEmail(event){
+  updateEmail(event) {
     console.log(" email value : ", event.target.value)
-    this.setState({ emailId : event.target.value })
+    this.setState({ emailId: event.target.value })
 
   }
 
-  updatePassword(event){
+  updatePassword(event) {
     console.log(" pwd value : ", event.target.value)
-    this.setState({ password : event.target.value })
+    this.setState({ password: event.target.value })
   }
-  
 
-  contactGithub(){
-    axios.get('https://github.com/login/oauth/authorize',{
-      client_id : '3fb8c782622ac4a1d0a6',
-      redirect_uri : '',
-      state : 'An unguessable random string',
-      allow_signup : false
-    }, {
-      headers : {
-        headers: {'Access-Control-Allow-Origin': '*'},
-      }
-    })
-    .then((response) =>{
-      console.log("response from github : ", response)
-    })
+
+  contactGithub() {
+    // console.log("HERE<")
+    //  axios.get('https://www.github.com/login/oauth/authorize/',{
+    //   /* client_id : '3fb8c782622ac4a1d0a6',
+    //   redirect_uri : '',
+    //   state : 'An unguessable random string',
+    //   allow_signup : false */
+    // }, {
+    //   headers : {
+    //     'Access-Control-Allow-Origin' : '*',
+    //   }
+    // })
+    // .then((response) =>{
+    //   console.log("response from github : ", response)
+    // }) 
+
+    //this doesnt work when the window name is 'gitWindow'.... strange
+    // window.open('https://www.github.com/login/oauth/authorize/?client_id=3fb8c782622ac4a1d0a6',
+    //   'gitWindow',
+    //   "height=100,width=100")
+
+    //but this does.....
+    window.open('https://www.github.com/login/oauth/authorize/?client_id=3fb8c782622ac4a1d0a6',//redirect_uri=http://localhost:3000/dashboard,
+      'dfgrhj',
+      "height=600,width=500")
+
+
+    /*  fetch('https://www.github.com/login/oauth/authorize/?client_id=3fb8c782622ac4a1d0a6', {
+       method: 'GET',
+       mode: 'no-cors',
+       // body : {
+       //   client_id : '3fb8c782622ac4a1d0a6'
+       // }
+     })
+       .then((response) => {
+         console.log('rs : ', response)
+       }) */
+
   }
 
   render() {
+
     return (
-      <div className="App">
-        <div id="loginBox">
-          <div style={{ paddingTop: '100px' }}>
-            <div>
-              <div>email-id</div>
-              <input type="email" value = { this.state.emailId } onChange = { this.updateEmail.bind(this) }/>
-            </div>
-            <div>
-              <div>password</div>
-              <input type="text" value = { this.state.password } onChange = { this.updatePassword.bind(this) }/>
-            </div>
-            <div>
-              <button type = "submit" onClick = { this.contactGithub } style = {{ marginTop : '20px' }}>
-                Login using Github
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+      <span>
+        <Switch>
+
+          <Route exact path="/" render={() => {
+            return (
+              <div className="App">
+                <div id="loginBox">
+                  <div style={{ paddingTop: '100px' }}>
+                    <div>
+                      <div>email-id</div>
+                      <input type="email" value={this.state.emailId} onChange={this.updateEmail.bind(this)} />
+                    </div>
+                    <div>
+                      <div>password</div>
+                      <input type="text" value={this.state.password} onChange={this.updatePassword.bind(this)} />
+                    </div>
+                    <div>
+                      {/* <a href = "">Link</a> */}
+                      <button type="submit" onClick={this.contactGithub} style={{ marginTop: '20px' }}>
+                        Login using Github
+                 </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )
+          }} />
+
+          <Route exact path="/dashboard" component={Dashboard} />
+
+        </Switch>
+      </span>
     );
   }
 }
