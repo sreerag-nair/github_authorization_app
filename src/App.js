@@ -46,8 +46,8 @@ class App extends Component {
     //   "height=100,width=100")
 
     //but this does.....
-    window.open('https://www.github.com/login/oauth/authorize/?client_id=3fb8c782622ac4a1d0a6',//redirect_uri=http://localhost:3000/dashboard,
-      'dfgrhj',
+    window.open('https://www.github.com/login/oauth/authorize/?client_id=3fb8c782622ac4a1d0a6',//&redirect_uri=http://localhost:3000/dashboard',
+      'gitwindow',
       "height=600,width=500")
 
 
@@ -104,3 +104,11 @@ class App extends Component {
 }
 
 export default App;
+
+
+/* 
+    ------------------LINKS------------------
+
+http://jsbin.com/yoyadazoko/edit?html,js,console,output
+
+*/
