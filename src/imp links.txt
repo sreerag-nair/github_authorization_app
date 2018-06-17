@@ -5,12 +5,26 @@ https://blog.revathskumar.com/2014/06/express-github-authentication-with-passpor
 https://github.com/jaredhanson/passport-github
 https://github.com/auth0/passport-auth0
 https://medium.com/@alexmngn/the-essential-boilerplate-to-authenticate-users-on-your-react-native-app-f7a8e0e04a42
-https://medium.com/front-end-hacking/use-github-oauth-as-your-sso-seamlessly-with-react-3e2e3b358fa1     <---!!!
+https://medium.com/@alexanderleon/implement-social-authentication-with-react-restful-api-9b44f4714fa
+https://medium.com/front-end-hacking/use-github-oauth-as-your-sso-seamlessly-with-react-3e2e3b358fa1                        <---!!!
+http://learn.humanjavascript.com/react-ampersand/redirecting-to-github-for-oauth
+https://gist.github.com/mziwisky/10079157
+https://rationalappdev.com/logging-into-react-native-apps-with-facebook-or-google/#create-the-server
+https://stackoverflow.com/questions/4727226/on-a-high-level-how-does-oauth-2-work
+https://www.cubrid.org/blog/dancing-with-oauth-understanding-how-authorization-works     <-------!!!!!
+
+
+
+https://www.youtube.com/watch?v=SXDce0e3Ue4
+https://www.youtube.com/watch?v=zEysfgIbqlg
+https://www.youtube.com/watch?v=L1PDqJkedZ0
 
 
 
 
 
+
+https://www.digitalocean.com/community/tutorials/an-introduction-to-oauth-2
 https://github.com/adambrgmn/react-oauth-flow#oauthsender-
 
 
