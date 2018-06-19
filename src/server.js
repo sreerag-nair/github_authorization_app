@@ -44,14 +44,24 @@ passport.use('github', new GitHubStrategy({
         console.log("accessToken : ", accessToken);
         // console.log("refreshToken : ", refreshToken);
         // console.log("passport-req : ", req.connection.localPort);
-
         //GET THE PRIMARY EMAIL.....
         console.log("profile : ", profile.emails[0].value);
+
+
+        if(profile.emails[0].value === 'fefadoy@loketa.com'){
+            console.log("Same")
+            done(null, profile)
+        }
+        else{
+            console.log("different")
+            done({err : "INVALID USER"})
+        }
+
         // console.log("done : ", done.toString());
-        done(null, profile)
     }))
 
-app.get('/authenticate',
+    //THIS METHOD WORKS!
+/* app.get('/authenticate',
     passport.authenticate('github', {
         failureRedirect: '/',
         session: false
@@ -61,29 +71,36 @@ app.get('/authenticate',
         console.log("HELLO THERE");
 
         res.status(200).send({message : "Welcome back..."})
-    });
+    }); */
 
-/* app.get('/cb', passport.authenticate('github', {
-    session: false
-}), function (req, res, next) {
 
-    console.log('HJGFNNYGBF')
-    // res.send({ message: "Hello there" })
-    //returns undefined.....
-    // console.log('req : ', req)
-    // console.log('req user : ', req.user)
-    // console.log('req info : ', req.authInfo)
+    //this method works too.....
+app.get('/authenticate', function(req, res, next){
 
-    // console.log("remote address : ", req.connection.localPort)
-    // console.log("remote address : ", req.connection.remotePort)
-    // res.redirect("http://localhost:3000/dashboard")
+    passport.authenticate('github', {
+        session: false
+    }, function (err, user, info) {
+    
+        console.log('HJGFNNYGBF')
+        // res.send({ message: "Hello there" })
+        //returns undefined.....
+        console.log('req : ', err)
+        console.log('res : ', user)
+        console.log('info : ', info)
+        // console.log('req user : ', req.user)
+        // console.log('req info : ', req.authInfo)
+    
+        // console.log("remote address : ", req.connection.localPort)
+        // console.log("remote address : ", req.connection.remotePort)
+        // res.redirect("http://localhost:3000/dashboard")
+    
+        res.send({ message: "success" });
+    
+        })(req, res, next);
+    
+        // res.end();
 
-    res.send({ message: "success" });
-
-    // })(req, res, next);
-
-    // res.end();
-}) */
+})
 
 
 app.get('/fire', function (req, res, next) {
