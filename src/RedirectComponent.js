@@ -66,3 +66,13 @@ class RedirectComponent extends Component {
 
 
 export default RedirectComponent;
+
+
+/* 
+
+...MY TIMER EXAMPLE...
+
+http://jsbin.com/disobileru/edit?html,js,console,output
+
+
+*/
