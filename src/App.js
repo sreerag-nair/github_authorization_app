@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
 import Dashboard from './Dashboard';
+import Redirect from './RedirectComponent';
 import { Link, Route, Switch } from 'react-router-dom';
 const passport = require('passport')
 const cors = require('cors')
@@ -68,23 +69,31 @@ class App extends Component {
     console.log(window.location.href)
   }
 
-  localdata(){
+
+  localdata() {
     console.log("dszfgv : ", this.state.emailId)
     console.log("dsxfgdfh : ", this.state.password)
 
     axios.post('http://localhost:8001/localstrategy', {
-    username : this.state.emailId,
-    password : this.state.password
+      username: this.state.emailId,
+      password: this.state.password
     })
-    .then((response) =>{
-      console.log("response : ", response)
-    })
+      .then((response) => {
+        console.log("response : ", response)
+      })
   }
 
 
   state = {
     emailId: '',
     password: ''
+  }
+
+  tywin(){
+    axios.get('http://localhost:8005/fire',{},)
+    .then((res) =>{
+      console.log("res : ",res)
+    })
   }
 
   render() {
@@ -111,13 +120,13 @@ class App extends Component {
 
 
                       {/* <Link to='http://localhost:8001/fire'> */}
-                        <button type="submit" style={{ marginTop: '20px' }}>
-                          <a href = "http://localhost:8001/fire">
+                      <a href="http://localhost:8005/authenticate">
+                        <button /* onClick = { this.tywin } */ type="submit" style={{ marginTop: '20px' }}>
                           Login using Github
-                          </a>
                         </button>
+                      </a>
                       {/* </Link> */}
-                      <button type = "submit" onClick={this.localdata.bind(this)}>
+                      <button type="submit" onClick={this.localdata.bind(this)}>
                         Submit
                       </button>
                     </div>
@@ -127,7 +136,8 @@ class App extends Component {
             )
           }} />
 
-          <Route exact path="/dashboard" component={Dashboard} />
+          <Route exact path="/dashboard" render={ (props) => <Dashboard {...props} />} />
+          <Route exact path="/redirect" render={ (props) => <Redirect {...props} />} />
 
         </Switch>
       </span>
