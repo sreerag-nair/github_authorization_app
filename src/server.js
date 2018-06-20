@@ -45,15 +45,30 @@ passport.use('github', new GitHubStrategy({
         // console.log("refreshToken : ", refreshToken);
         // console.log("passport-req : ", req.connection.localPort);
         //GET THE PRIMARY EMAIL.....
-        console.log("profile : ", profile.emails[0].value);
+        // console.log("email : ", profile.emails[0].value);
+
+        console.log("----------------------------------------------------------------");
+            // for(x in profile){
+            //     console.log("x :" ,x.toString())
+
+            //     if(x.toString() === ' json')
+            //         console.log("PROFILE.X : ", profile[x])
+                
+            //     }
+                console.log("profile : ", profile)
+                console.log("email : ", profile.emails[0].value);
+                console.log("node_id : " , profile['_json'].node_id)
+
+
+        console.log("----------------------------------------------------------------");
 
 
         if(profile.emails[0].value === 'fefadoy@loketa.com'){
-            console.log("Same")
+            // console.log("Same")
             done(null, profile)
         }
         else{
-            console.log("different")
+            // console.log("different")
             done({err : "INVALID USER"})
         }
 
@@ -81,7 +96,7 @@ app.get('/authenticate', function(req, res, next){
         session: false
     }, function (err, user, info) {
     
-        console.log('HJGFNNYGBF')
+        // console.log('HJGFNNYGBF')
         // res.send({ message: "Hello there" })
         //returns undefined.....
         console.log('req : ', err)
